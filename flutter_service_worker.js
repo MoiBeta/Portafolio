@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "5aec17ff6a70ccaaca9858b59685f57e",
+  "assets/AssetManifest.json": "350a0c4ad3bec568db820d2cd840d501",
 "assets/assets/GoogleSans-Regular.ttf": "b5c77a6aed75cdad9489effd0d5ea411",
 "assets/assets/image/androidFlutter.png": "b34d39dd980b2ef651db5b599c4a97fd",
 "assets/assets/image/android_icon.png": "738f371a37704058d562438b1e5cb09a",
@@ -31,6 +31,7 @@ const RESOURCES = {
 "assets/assets/image/scrum.png": "b8ca54c48291a0369b60bad37d7853ea",
 "assets/assets/image/sqLite.jpg": "9992af36d95e81c86d58ed2cae62fe29",
 "assets/assets/image/sun.png": "7cc9db32f5c2d4ace0472292ac512610",
+"assets/assets/image/tobecontinued.png": "27ff75ea3bae6afd48c2a18f38d145fc",
 "assets/assets/image/triqui_icon.png": "fb420f8419e10a4d528e999d431ac55d",
 "assets/assets/image/yo.png": "dc8e1873ea16107db3da641319269732",
 "assets/FontManifest.json": "5ce289308f0777564762a51e3517d78c",
@@ -46,9 +47,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "1eceefafafd6dfe683b86fe3e80f65d8",
-"/": "1eceefafafd6dfe683b86fe3e80f65d8",
-"main.dart.js": "c4f90b834ec8ced88b5b75ef03514faf",
+"index.html": "5b17cd77e77fef87ab11c462f918a109",
+"/": "5b17cd77e77fef87ab11c462f918a109",
+"main.dart.js": "3df11d9ed2b0621bf097a90406217fdf",
 "manifest.json": "a2e663b7ce00debff628a06023f8bf6f",
 "version.json": "038eeb21ccc77b35d6751844670f87d7"
 };
