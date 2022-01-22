@@ -1,82 +1,100 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Portafolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-		<!-- Header -->
-			<div id="header">
-				<span class="logo icon fa-paper-plane"></span>
-				<h1>Moisés Betancourt</h1>
-				<p>Soy un Desarrollador de aplicaciones nativas de Android</a>
-				<br /> apasionado por resolver problemas y aprender de todo un poco.</p>
-			</div>
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
 
-		<!-- Main -->
-			<div id="main">
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
-				<header class="major container medium">
-					<h2>Diseño desde cero
-					<br />
-					aplicaciones en Java y Kotlin, usando las mejores
-					<br />
-					 y mas actualizadas prácticas de programación ofrecidas actualmente</h2>
-				</header>
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
 
-				<div class="box alt container">
-					<section class="feature left">
-						<a href="#" class="image icon solid fa-signal"><img src="images/pic01.jpg" alt="" /></a>
-						<div class="content">
-							<h3>Librerías Jetpack</h3>
-							<p>Conocimientos de librerías ofrecidas por Google, tales como Room, Databinding, Livedata, Viewmodel, entre otras.</p>
-						</div>
-					</section>
-					<section class="feature right">
-						<a href="#" class="image icon solid fa-code"><img src="images/pic02.jpg" alt="" /></a>
-						<div class="content">
-							<h3>Lenguajes de programación</h3>
-							<p>Conocimientos avanzados en lenguajes de programación usados para el desarrollo de aplicaciones nativas, tales como Java y Kotlin.</p>
-						</div>
-					</section>
-					<section class="feature left">
-						<a href="#" class="image icon solid fa-mobile-alt"><img src="images/pic03.jpg" alt="" /></a>
-						<div class="content">
-							<h3>Rest Services</h3>
-							<p>Uso de librerías Retofit para el consumo de servicios Rest</p>
-						</div>
-					</section>
-				</div>
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
 
-				<div class="box container">
-					<section>
-						<header>
-							<h3>Algunas aplicaciones de muestra:</h3>
-						</header>
-						<ul class="default">
-							<li>Triqui: Aplicación que imita al juego Triqui, Tres en linea, TicTacToe, etc. Usa servicios de Google Firebase para conectar usuarios desde cualquier lugar. Puede chequearse en la playstore dando click <a href="https://play.google.com/store/apps/details?id=com.triqui.tictactoc" target="_blank">aquí.</a> </li>
-							<li>MovieTrailers: Aplicación que consume servicios Rest API para mostrar las mas recientes películas estrenadas, incluyendo trailers y reseñas de cada una.</li>
-						</ul>
-					</section>
-				</div>
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="portafolio_app">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-			</div>
+  <title>portafolio_app</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!-- This script installs service_worker.js to provide PWA functionality to
+       application. For more information, see:
+       https://developers.google.com/web/fundamentals/primers/service-workers -->
+  <script>
+    var serviceWorkerVersion = '3020022676';
+    var scriptLoaded = false;
+    function loadMainDartJs() {
+      if (scriptLoaded) {
+        return;
+      }
+      scriptLoaded = true;
+      var scriptTag = document.createElement('script');
+      scriptTag.src = 'main.dart.js';
+      scriptTag.type = 'application/javascript';
+      document.body.append(scriptTag);
+    }
 
-		<!-- Footer -->
-			<div id="footer">
-				<div class="container medium">
+    if ('serviceWorker' in navigator) {
+      // Service workers are supported. Use them.
+      window.addEventListener('load', function () {
+        // Wait for registration to finish before dropping the <script> tag.
+        // Otherwise, the browser will load the script multiple times,
+        // potentially different versions.
+        var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
+        navigator.serviceWorker.register(serviceWorkerUrl)
+          .then((reg) => {
+            function waitForActivation(serviceWorker) {
+              serviceWorker.addEventListener('statechange', () => {
+                if (serviceWorker.state == 'activated') {
+                  console.log('Installed new service worker.');
+                  loadMainDartJs();
+                }
+              });
+            }
+            if (!reg.active && (reg.installing || reg.waiting)) {
+              // No active web worker and we have installed or are installing
+              // one for the first time. Simply wait for it to activate.
+              waitForActivation(reg.installing || reg.waiting);
+            } else if (!reg.active.scriptURL.endsWith(serviceWorkerVersion)) {
+              // When the app updates the serviceWorkerVersion changes, so we
+              // need to ask the service worker to update.
+              console.log('New service worker available.');
+              reg.update();
+              waitForActivation(reg.installing);
+            } else {
+              // Existing service worker is still good.
+              console.log('Loading app from service worker.');
+              loadMainDartJs();
+            }
+          });
 
-					<header class="major last">
-						<h2>Questions or comments?</h2>
-					</header>
-
-					<ul class="icons">
-						<li><a href="https://github.com/MoiBeta " target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
-					</ul>
-				</div>
-			</div>
-	</body>
+        // If service worker doesn't succeed in a reasonable amount of time,
+        // fallback to plaint <script> tag.
+        setTimeout(() => {
+          if (!scriptLoaded) {
+            console.warn(
+              'Failed to load app from service worker. Falling back to plain <script> tag.',
+            );
+            loadMainDartJs();
+          }
+        }, 4000);
+      });
+    } else {
+      // Service workers not supported. Just drop the <script> tag.
+      loadMainDartJs();
+    }
+  </script>
+</body>
 </html>
